@@ -1,0 +1,9 @@
+^XA
+
+
+^FX Third section with bar code.
+^BY5,2,270
+^FO100,550^BC^FD@EAN^FS
+
+^PQ@QTY
+^XZ
