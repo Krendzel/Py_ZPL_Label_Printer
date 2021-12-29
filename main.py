@@ -1,14 +1,17 @@
-import os
-from os.path import isfile, join
-import glob
+import re, fnmatch, os
 
-def list_files(path):
-    for file in glob.glob(path):
-        if isfile(file):
-            filename = os.path.basename(file)
-            full_path = file
+path = 'templates/template_2.txt'
+pattern = r'{[A-z]*[0-9]*}'
 
-
-
-
-list_files('templates/*.txt')
+def print_vars(path):
+    with open(path, 'r') as f:
+        data = f.read()
+        found = re.findall(pattern, data)
+        print('Przed: '+data)
+        print('-------------------')
+        for i in found:
+            data = data.replace(i, '________')
+            print(f'{i}  ->  {i[1:-1]}')
+        print('-------------------')
+    print('Po: '+data)
+print_vars(path)

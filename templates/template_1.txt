@@ -1,9 +1,9 @@
 ^XA
+^CF0,40
+^FO50,300^FD{var1}^FS
+^FO50,360^FD100{street_name}^FS
+^FO50,420^FD{city} TN 39021^FS
+^FO50,480^FDUnited States (USA)^FS
 
 
-^FX Third section with bar code.
-^BY5,2,270
-^FO100,550^BC^FD@EAN^FS
-
-^PQ@QTY
 ^XZ
