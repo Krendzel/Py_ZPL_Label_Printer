@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox, QDialog, QLabel, QGroupBox, QSplitter, QComboBox, QPushButton, QLineEdit, QSpinBox, QTableWidget, QTableWidgetItem
+from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox, QDialog, QLabel, QGroupBox, QSplitter, QComboBox, QPushButton, QLineEdit, QSpinBox, QTableWidget, QTableWidgetItem, QStatusBar
 from PyQt5 import uic
 from PyQt5.QtCore import pyqtSlot
 import sys
@@ -6,6 +6,7 @@ import os, re
 from os.path import isfile
 import glob
 import socket
+import time
 
 class UI(QMainWindow):
 
@@ -14,23 +15,27 @@ class UI(QMainWindow):
         super(UI, self).__init__()
         uic.loadUi('untitled.ui', self)
 
-        self.button = self.findChild(QPushButton, 'pushButton')
         self.print_template_btn = self.findChild(QPushButton, 'print_template_btn')
-        self.save_data_btn = self.findChild(QPushButton, 'save_data_btn')
 
-        self.label = self.findChild(QLabel, 'label')
+        # self.label = self.findChild(QLabel, 'label')
+        self.status_label = self.findChild(QLabel, 'status_label')
         self.templates_combo = self.findChild(QComboBox, 'template_select')
         self.templates_combo.currentIndexChanged.connect(lambda: self.read_template(self.templates_combo.currentData()))
         self.ean_input = self.findChild(QLineEdit, 'ean_input')
         self.qty_input = self.findChild(QSpinBox, 'qty_input')
-
+        self.printer_select = self.findChild(QComboBox, 'printer_select')
         self.tableWidget = self.findChild(QTableWidget, 'tableWidget')
         self.tableWidget.setColumnWidth(0, 200)
         self.tableWidget.setColumnWidth(1, 150)
 
-        self.print_template_btn.clicked.connect(lambda: self.print_template(self.templates_combo.currentData()))
-        self.button.clicked.connect(lambda: self.msg_box(self.templates_combo.currentData()))
-        self.save_data_btn.clicked.connect(lambda: self.get_all_values())
+
+        self.printer_select.addItem('IDL', '10.213.34.1')
+        self.printer_select.addItem('DEV', '127.0.0.1')
+
+        self.print_template_btn.clicked.connect(lambda: self.get_all_values())
+
+        self.statusBar = self.findChild(QStatusBar, 'statusbar')
+        self.statusBar.showMessage('Ready')
 
         for file in glob.glob('templates/*.txt'):
             if isfile(file):
@@ -54,7 +59,7 @@ class UI(QMainWindow):
                 item_copy = item.copy()
                 list_of_rows.append(item_copy)
 
-            print(list_of_rows)
+            # print(list_of_rows)
         self.load_data_from_file(list_of_rows)
 
 
@@ -66,6 +71,7 @@ class UI(QMainWindow):
             self.tableWidget.setItem(row, 0, QTableWidgetItem(slot['col_1'], ))
             self.tableWidget.setItem(row, 1, QTableWidgetItem(slot['col_2'], ))
             row=row+1
+
 
         #get table values
 
@@ -80,6 +86,7 @@ class UI(QMainWindow):
                 col_name = self.tableWidget.item(row, 0).text()
                 col_value = self.tableWidget.item(row, 1).text()
                 data = data.replace(col_name, col_value)
+                
 
             # Add PQ param if label QTY is > 1
             # if int(self.qty_input.text()) > 1:
@@ -91,25 +98,32 @@ class UI(QMainWindow):
         variables = []
         with open(path, 'r') as f:
             data = f.read()
-            print(data)
+            # print(data)
             self.print_zpl_label(data)
 
 
 
     def msg_box(self, text):
-        print(text)
+        # print(text)
         self.label.setText(str(text))
         # QMessageBox('Title', str(self.templates_combo.currentData()))
 
     def print_zpl_label(self, label):
         mysocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # create a socket object
-        host = "127.0.0.1"
+        host = self.printer_select.currentData()
+        # host = "127.0.0.1"
         port = 9100
+        # print(host)
+        self.statusBar.showMessage('Connecting to ' + host)
         try:
             mysocket.connect((host, port))  # connecting to host
             mysocket.send(bytes(label, encoding='utf-8'))  # using bytes
             mysocket.close()  # closing connection
+            self.statusBar.showMessage('Printing label')
         except:
+            self.statusBar.showMessage('Error connecting to ' + host)
+
+            # print(host)
             print("Error with the connection")
 
 app = QApplication(sys.argv)

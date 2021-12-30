@@ -6,18 +6,28 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>421</width>
-    <height>600</height>
+    <width>420</width>
+    <height>550</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string notr="true">IDL - Label Generator 1.0</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>C:/Users/bkrendzelak/Downloads/icona.ico</normaloff>C:/Users/bkrendzelak/Downloads/icona.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>10</y>
       <width>401</width>
       <height>141</height>
@@ -27,196 +37,211 @@
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="title">
-     <string>GroupBox</string>
+     <string/>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
-    <widget class="QSplitter" name="splitter">
+    <widget class="QComboBox" name="printer_select">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>100</x>
        <y>20</y>
-       <width>371</width>
-       <height>20</height>
+       <width>290</width>
+       <height>30</height>
       </rect>
      </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-     <widget class="QLabel" name="printer_label">
-      <property name="text">
-       <string>Drukarka</string>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="printer_select">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <item>
-       <property name="text">
-        <string notr="true" comment="10.213.35.1" extracomment="10.213.35.1">PZSPPTE001</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nowy element</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nowy elementNowy elementNowy element</string>
-       </property>
-      </item>
-     </widget>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
     </widget>
-    <widget class="QSplitter" name="template_2">
+    <widget class="QLabel" name="printer_label">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>50</y>
-       <width>371</width>
-       <height>20</height>
+       <x>10</x>
+       <y>20</y>
+       <width>80</width>
+       <height>30</height>
       </rect>
      </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>11</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
      </property>
-     <widget class="QLabel" name="template_label">
-      <property name="text">
-       <string>Szablon</string>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="template_select">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-     </widget>
+     <property name="text">
+      <string>Drukarka</string>
+     </property>
     </widget>
-    <widget class="QSplitter" name="qty">
+    <widget class="QLabel" name="qty_label">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>80</y>
-       <width>371</width>
-       <height>20</height>
+       <x>10</x>
+       <y>100</y>
+       <width>80</width>
+       <height>30</height>
       </rect>
      </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
      </property>
-     <widget class="QLabel" name="qty_label">
-      <property name="text">
-       <string>Ilość</string>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="qty_input">
-      <property name="minimum">
-       <number>1</number>
-      </property>
-      <property name="maximum">
-       <number>250</number>
-      </property>
-     </widget>
+     <property name="text">
+      <string>Ilość</string>
+     </property>
     </widget>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>410</y>
-      <width>391</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>OK</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>520</y>
-      <width>261</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
-    </property>
+    <widget class="QSpinBox" name="qty_input">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>100</y>
+       <width>290</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>250</number>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="template_select">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>60</y>
+       <width>290</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+    </widget>
+    <widget class="QLabel" name="template_label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>80</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Szablon</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QPushButton" name="print_template_btn">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>440</y>
-      <width>391</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Print template</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="ean_input">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>360</y>
-      <width>371</width>
+      <x>10</x>
+      <y>400</y>
+      <width>400</width>
       <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>16</pointsize>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
-    <property name="inputMethodHints">
-     <set>Qt::ImhNone</set>
-    </property>
-    <property name="placeholderText">
-     <string>Wpisz EAN</string>
+    <property name="text">
+     <string>DRUKUJ</string>
     </property>
    </widget>
    <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
-      <x>15</x>
-      <y>160</y>
-      <width>391</width>
-      <height>151</height>
+      <x>10</x>
+      <y>190</y>
+      <width>400</width>
+      <height>180</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="sizeAdjustPolicy">
+     <enum>QAbstractScrollArea::AdjustToContents</enum>
+    </property>
+    <property name="alternatingRowColors">
+     <bool>true</bool>
+    </property>
+    <property name="gridStyle">
+     <enum>Qt::SolidLine</enum>
+    </property>
+    <attribute name="horizontalHeaderVisible">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="horizontalHeaderStretchLastSection">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderStretchLastSection">
+     <bool>false</bool>
+    </attribute>
     <column>
      <property name="text">
-      <string>col_1</string>
+      <string>Zmienna</string>
      </property>
     </column>
     <column>
      <property name="text">
-      <string>col_2</string>
+      <string>Wartość</string>
      </property>
     </column>
    </widget>
-   <widget class="QPushButton" name="save_data_btn">
+   <widget class="QLabel" name="status_label">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>320</y>
+      <x>10</x>
+      <y>460</y>
       <width>391</width>
-      <height>23</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>Save data</string>
+     <string/>
     </property>
    </widget>
   </widget>
@@ -225,18 +250,24 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>421</width>
+     <width>420</width>
      <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menufdfdf">
     <property name="title">
-     <string>fdfdf</string>
+     <string>Pomoc</string>
     </property>
+    <addaction name="actionO_programie"/>
    </widget>
    <addaction name="menufdfdf"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionO_programie">
+   <property name="text">
+    <string>O programie</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
