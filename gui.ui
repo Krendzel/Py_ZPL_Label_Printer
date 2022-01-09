@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string notr="true">IDL - Label Generator 1.0</string>
+   <string notr="true">Python Zebra Label Printer</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -81,7 +81,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Drukarka</string>
+      <string>Printer</string>
      </property>
     </widget>
     <widget class="QLabel" name="qty_label">
@@ -99,7 +99,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Ilość</string>
+      <string>Quantity</string>
      </property>
     </widget>
     <widget class="QSpinBox" name="qty_input">
@@ -161,7 +161,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Szablon</string>
+      <string>Template</string>
      </property>
     </widget>
    </widget>
@@ -182,7 +182,7 @@
      </font>
     </property>
     <property name="text">
-     <string>DRUKUJ</string>
+     <string>PRINT</string>
     </property>
    </widget>
    <widget class="QTableWidget" name="tableWidget">
@@ -222,12 +222,12 @@
     </attribute>
     <column>
      <property name="text">
-      <string>Zmienna</string>
+      <string>Variable</string>
      </property>
     </column>
     <column>
      <property name="text">
-      <string>Wartość</string>
+      <string>Value</string>
      </property>
     </column>
    </widget>
@@ -254,13 +254,6 @@
      <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menufdfdf">
-    <property name="title">
-     <string>Pomoc</string>
-    </property>
-    <addaction name="actionO_programie"/>
-   </widget>
-   <addaction name="menufdfdf"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionO_programie">
